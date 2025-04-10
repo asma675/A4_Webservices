@@ -1,0 +1,22 @@
+<div class="container mt-4">
+    <h3>Edit Books</h3>
+    <div *ngFor="let book of books" class="card p-3 my-2" [ngStyle]="{'background-color': book.edit ? '#f0f8ff' : '#fff'}">
+        <div *ngIf="!book.edit">
+            <strong>{{ book.title }}</strong> by {{ book.authorName }}
+            <button class="btn btn-sm btn-outline-primary ms-3" (click)="book.edit = true">Edit</button>
+        </div>
+
+        <div *ngIf="book.edit">
+            <label>Title</label>
+            <input [(ngModel)]="book.title" class="form-control mb-1">
+            <label>Author</label>
+            <input [(ngModel)]="book.authorName" class="form-control mb-1">
+            <label>Price</label>
+            <input [(ngModel)]="book.price" type="number" class="form-control mb-1">
+            <label>Quantity</label>
+            <input [(ngModel)]="book.quantity" type="number" class="form-control mb-2">
+            <button class="btn btn-success btn-sm" (click)="saveChanges(book)">Save</button>
+            <button class="btn btn-secondary btn-sm ms-2" (click)="book.edit = false">Cancel</button>
+        </div>
+    </div>
+</div>
